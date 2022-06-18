@@ -5,10 +5,11 @@ interface IDependency {
 }
 
 interface IRequestKukmin {
-    getBalanceInquiry(userId: string): Promise<number>
+    getBalanceInquiry(userId: string, userCity: string): Promise<number>
 }
 
 /**
+ * 잔액조회 인바운드 어댑터
  *
  * @param dependency 의존성
  * @returns 잔액조회 함수
@@ -19,9 +20,9 @@ export function balanceInquiryInAdapterInitiator(dependency: IDependency): IRequ
     } = dependency
 
     return {
-        async getBalanceInquiry(userId: string): Promise<number> {
-            console.log('Kukmin bank get balance inquiry')
-            return await getBalanceInquiry(userId)
+        async getBalanceInquiry(userId: string, userCity: string): Promise<number> {
+            console.log('Kukmin bank get balance inquiry.', userId, userCity)
+            return await getBalanceInquiry(`${userId}:${userCity}`)
         },
     }
 }

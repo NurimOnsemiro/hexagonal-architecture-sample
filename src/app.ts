@@ -12,6 +12,6 @@ const balanceInquiryDomain = balanceInquiryDomainInitiator({ balanceInquiryOutAd
 const balanceInquiryInAdapter = balanceInquiryInAdapterInitiator({ balanceInquiryDomain })
 
 ;(async () => {
-    const result = await balanceInquiryInAdapter.getBalanceInquiry('109928', 100)
+    const result = await balanceInquiryInAdapter.getBalanceInquiry('honsemiro', 20)
     console.log(result)
 })()

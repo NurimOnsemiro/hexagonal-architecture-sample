@@ -1,25 +1,3 @@
-// import { IBalanceInquiryInPort } from '../../../ports/inbound/balance-inquiry-in-port'
-
-// interface IDependency {
-//     balanceInquiryDomain: IBalanceInquiryInPort
-// }
-
-// /**
-//  *
-//  * @param dependency 의존성
-//  * @returns 잔액조회 함수
-//  */
-// export async function balanceInquiryInAdapterInitiator(dependency: IDependency) {
-//     const {
-//         balanceInquiryDomain: { getBalanceInquiry },
-//     } = dependency
-
-//     return async (userId: string, userType: number) => {
-//         console.log('Shinhan bank get balance inquiry')
-//         return getBalanceInquiry(`${userId}-${userType}`)
-//     }
-// }
-
 import { IBalanceInquiryInPort } from '../../../ports/inbound/balance-inquiry-in-port'
 
 interface IDependency {
@@ -27,7 +5,7 @@ interface IDependency {
 }
 
 interface IRequestShinhan {
-    getBalanceInquiry(userId: string, userType: number): Promise<number>
+    getBalanceInquiry(userId: string, userAge: number): Promise<number>
 }
 
 /**
@@ -41,9 +19,9 @@ export function balanceInquiryInAdapterInitiator(dependency: IDependency): IRequ
     } = dependency
 
     return {
-        async getBalanceInquiry(userId: string, userType: number): Promise<number> {
-            console.log('Shinhan bank get balance inquiry.', userId, userType)
-            return await getBalanceInquiry(`${userId}-${userType}`)
+        async getBalanceInquiry(userId: string, userAge: number): Promise<number> {
+            console.log('Shinhan bank get balance inquiry.', userId, userAge)
+            return await getBalanceInquiry(`${userId}:${userAge}`)
         },
     }
 }
