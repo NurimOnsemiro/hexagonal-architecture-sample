@@ -9,6 +9,7 @@ interface IRequestShinhan {
 }
 
 /**
+ * 잔액조회 인바운드 어댑터
  *
  * @param dependency 의존성
  * @returns 잔액조회 함수

@@ -7,6 +7,7 @@ async function mockSelectBalanceInquiry(userId: string) {
 interface IDependency {}
 
 /**
+ * 잔액조회 아웃바운드 어댑터
  *
  * @param dependency 의존성 객체
  * @returns IBalanceInquiryOutPort 구현체
